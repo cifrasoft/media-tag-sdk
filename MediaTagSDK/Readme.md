@@ -1,5 +1,5 @@
 
-# MediaTagSDK
+# MiromaxPod
 We would like to collect anonymous information about a user's online activities to create some statistics. 
 
 this framework gives you the opportunity :
