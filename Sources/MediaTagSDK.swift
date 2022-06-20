@@ -89,6 +89,7 @@ public final class MediaTagSDK: EventFactoryProtocol {
   
   deinit{
     monitor.cancel()
+    timer?.invalidate()
   }
 }
 
