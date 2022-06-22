@@ -4,10 +4,15 @@
 #### Для инициализации SDK используйте `convenience init`
 
 ```swift
-    NSMediatagSDK  *mediatagSDK = [[NSMediatagSDK alloc] initWithCid: @"cid" tms: @"tms" uid: @"uid" hid: @"hid" uidc: @1];
+    NSMediatagSDK  *mediatagSDK   = [[NSMediatagSDK alloc]  initWithCid : @"cid" 
+                                                                    tms : @"tms" 
+                                                                    uid : @"uid"
+                                                                    hid : @"hid" 
+                                                                   uidc : @1
+    ];
 ```
   
-#### или расширенную конфигурацю:
+#### или через объект конфигурации:
 
 ```swift
     NSConfiguration *configuration = [[NSConfiguration alloc] initWithCid : @"userCid" 
@@ -38,12 +43,12 @@
   ];
 ```
 - `Sending availability` 
-  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в [очередь отправки](https://github.com/cifrasoft/media-tag-sdk#sending-queue) 
+  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в `очередь отправки`
   ```swift 
     func getSendingAbility() -> Bool
   ```
 
-  > После восстановления интернет-соединения выполнится попытка отправить запросы из [очереди отправки](https://github.com/cifrasoft/media-tag-sdk#sending-queue), в противном случае отправка ожидающих запросов будет приостановлена.
+  > После восстановления интернет-соединения выполнится попытка отправить запросы из `очереди отправки`, в противном случае отправка ожидающих запросов будет приостановлена.
   
 - `Sending queue`
   ```swift

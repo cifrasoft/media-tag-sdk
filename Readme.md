@@ -40,7 +40,6 @@
 #### Проверка базовых аттрибутов
   ```swift
     var userAttributes:  [[String: Any?]]
-    // mediatagSDK.userAttributes -> [[String: Any?]] 
   ```
 
 ### Отправка событий
@@ -51,17 +50,15 @@
 ```
 
 - `Sending availability` 
-  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в [очередь сообщений](https://github.com/cifrasoft/media-tag-sdk#sending-queue) 
+  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в очередь сообщений 
   ```swift 
     var sendingIsAvailable: Bool
   ```
-
-  > After the internet connection is restored  the requests from the `sending queue` will try to resume, otherwise the sending of pending requests will be suspended
-  > После восстановления интернет-подключения запросы от сервера `sending queue` будут возобновлены,иначе отправка ожидающих отправки запросов будет приостановлена.
+    > После восстановления интернет-соединения MediatagSDK автоматически попытается отправить запросы из `очереди отправки`, в противном случае отправка ожидающих запросов будет приостановлена.
   
 - `Sending queue`
+  массив url ожидающих отправления
   ```swift
     var sendingQueue: [String?]
-    // mediatagSDK.sendingQueue -> [String?]
   ```
   
