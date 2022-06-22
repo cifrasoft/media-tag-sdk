@@ -1,6 +1,6 @@
 //
 //  ModelEnums.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
 //  Created by Maksim Mironov on 13.04.2022.
 //

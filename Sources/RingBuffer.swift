@@ -1,6 +1,6 @@
 //
 //  RingBuffer.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
 //  Created by Maksim Mironov on 18.05.2022.
 //

@@ -1,8 +1,8 @@
 //
 //  extention.ConfigurationType.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
-//  Created by Sergey Zhidkov on 03.06.2022.
+//  Created by Maksim Mironov on 03.06.2022.
 //
 
 import Foundation

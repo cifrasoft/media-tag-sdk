@@ -1,7 +1,7 @@
 
-## Usage
+## Применение
 
-You have to create configuration with the `ConfigurationType` protocol implementation
+Вы должны создать объект конфигурациий с реализацией протокола `ConfigurationType`
 
   ```swift
     final class SDKConfiguration: ConfigurationType{
@@ -18,45 +18,44 @@ You have to create configuration with the `ConfigurationType` protocol implement
 
     }
   ```
-### Customize default configuration settings:
-The ConfigurationType protocol inherits [RequestConfiguration](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Configuration.swift)
-> You can override some methods of constructing the url
-- `urlComponents` (base implementation):
+### Настройка параметров конфигурации по умолчанию:
+Протокол ConfigurationTyp eнаследуется от [RequestConfiguration](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Configuration.swift)
+> Вы можете переопределить методы построения URL-адреса
+- `urlComponents` (базовая реализация):
   ```swift
     var urlComponents: URLComponents! {
       var urlComponents = URLComponents()
       urlComponents.scheme = "https"
       urlComponents.host = "domain" 
-      urlComponents.path = "/path" // **important** use '/'
+      urlComponents.path = "/path" // **ВАЖНО** добавьте '/'
       return urlComponents
     }
   ```
-  > don't foget '/' in host trailing or path leading otherwise Request will be failed
+  > не забывайте '/' в конце хоста или в начале пути, иначе запрос будет отклонен
 
 - `toQuery()` 
-  map current configuration to Dictionary<String, Any?>
-  for extending the default url [configuration](https://github.com/miromax21/miromaxPod#check-configuration)  elements
+  преобразовать конфигурацию в Dictionary<String, Any?> для [инициализации](https://github.com/miromax21/miromaxPod#check-configuration) элементов базового url
   ```swift
     func toQuery() -> [[String: Any?]] {}
   ```
 
 - `mapQuery` 
-  modify query items of the url before you send request at the `first time`:
+  измените элементы запроса URL-адреса перед отправкой запроса по адресу `только при инициализации url`:
   ```swift
     func mapQuery(query: [[String: Any?]]) -> [URLQueryItem] {}
   ```
 
-   - [x] check
-   - [x] filtering
-   - [x] append query items
+   - [x] для прроверки
+   - [x] фильтрации
+   - [x] добавления кастомных параметров
 
 
-### Build
+### Запуск
 ```swift
-  let mediaTadSdk = MediaTagSDK(configuration: config)
+  let mediatagSDK = MediatagSDK(configuration: config)
 ```
   
-### Prepare request
+### Подготовка запроса
 ```swift
   // MARK: - PluginType Implementation
   struct SDKPlugin :PluginType {
@@ -66,6 +65,6 @@ The ConfigurationType protocol inherits [RequestConfiguration](https://github.co
     }
   }
 
-  let mediaTadSdk = MediaTagSDK(configuration: config, plugins: [SDKPlugin()])
+  let mediatagSDK = MediatagSDK(configuration: config, plugins: [SDKPlugin()])
   
 ```

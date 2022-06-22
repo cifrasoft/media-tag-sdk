@@ -1,18 +1,18 @@
 //
-//  MediaTagSDK.h
-//  MediaTagSDK
+//  MediatagSDK.h
+//  MediatagSDK
 //
-//  Created by Sergey Zhidkov on 17.06.2022.
+//  Created by Maksim Mironov on 17.06.2022.
 //
 
 #import <Foundation/Foundation.h>
 
-//! Project version number for MediaTagSDK.
-FOUNDATION_EXPORT double MediaTagSDKVersionNumber;
+//! Project version number for MediatagSDK.
+FOUNDATION_EXPORT double MediatagSDKVersionNumber;
 
-//! Project version string for MediaTagSDK.
-FOUNDATION_EXPORT const unsigned char MediaTagSDKVersionString[];
+//! Project version string for MediatagSDK.
+FOUNDATION_EXPORT const unsigned char MediatagSDKVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <MediaTagSDK/PublicHeader.h>
+// In this header, you should import all the public headers of your framework using statements like #import <MediatagSDK/PublicHeader.h>
 
 

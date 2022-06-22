@@ -1,6 +1,6 @@
 //
 //  Event.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
 //  Created by Maksim Mironov on 12.04.2022.
 //

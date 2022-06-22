@@ -1,17 +1,17 @@
 //
-//  NSMediaTagSDK.swift
-//  MediaTagSDK
+//  NSMediatagSDK.swift
+//  MediatagSDK
 //
-//  Created by Sergey Zhidkov on 02.06.2022.
+//  Created by Maksim Mironov on 02.06.2022.
 //
 
 import Foundation
-public class NSMediaTagSDK: NSObject{
-  private var mediaTagSDK: EventFactoryProtocol!
+public class NSMediatagSDK: NSObject{
+  private var mediatagSDK: MediatagSDK!
 
   @objc public init(configuration: NSConfiguration){
     super.init()
-    mediaTagSDK = MediatagSDK(configuration: configuration)
+    mediatagSDK = MediatagSDK(configuration: configuration)
   }
   
   @objc public convenience init(cid: String, tms: String!, uid: String?, hid: String?, uidc: NSNumber?) {
@@ -23,20 +23,20 @@ public class NSMediaTagSDK: NSObject{
     if let view = view {
       eventView = EventType(rawValue: Int(truncating: view))
     }
-    mediaTagSDK.next(Event(contactType: ContactType(rawValue: contactType.intValue), view: eventView, idc: idc as? Int, idlc: idlc as String, fts: fts, urlc: urlc as String, media: media, ver: ver as? Int))
+    mediatagSDK.next(Event(contactType: ContactType(rawValue: contactType.intValue), view: eventView, idc: idc as? Int, idlc: idlc as String, fts: fts, urlc: urlc as String, media: media, ver: ver as? Int))
   }
 
   @objc public func getSendingQueue() -> Array<String>{
-    return mediaTagSDK.sendingQueue.compactMap {$0}
+    return mediatagSDK.sendingQueue.compactMap {$0}
   }
   
   @objc public func getSendingAbility() -> Bool{
-    return mediaTagSDK.sendingIsAvailable
+    return mediatagSDK.sendingIsAvailable
   }
   
   @objc public func getUserAttributes() -> NSMutableDictionary  {
     let nsAttributes: NSMutableDictionary = [:]
-    mediaTagSDK.userAttributes.forEach{
+    mediatagSDK.userAttributes.forEach{
       if let next = $0.first{
         nsAttributes.setObject(next.value, forKey: next.key as NSCopying)
       }

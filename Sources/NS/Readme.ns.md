@@ -1,49 +1,49 @@
 
-## Usage
-### Build
-#### For SDK initialization use `convenience init`
+## Применение
+### Запуск
+#### Для инициализации SDK используйте `convenience init`
 
 ```swift
-    NSMediatagSDK  *sdk = [[NSMediatagSDK alloc] initWithCid: @"cid" tms: @"tms" uid: @"uid" hid: @"hid" uidc: @1];
+    NSMediatagSDK  *mediatagSDK = [[NSMediatagSDK alloc] initWithCid: @"cid" tms: @"tms" uid: @"uid" hid: @"hid" uidc: @1];
 ```
   
-#### or advanced configuration:
+#### или расширенную конфигурацю:
 
 ```swift
-    NSConfiguration *configuration = [[NSConfiguration alloc] 
-    initWithCid: @"userCid" 
-    tms: @"tms" 
-    uid: @"uid" 
-    hid: @"hid" 
-    uidc: @1
+    NSConfiguration *configuration = [[NSConfiguration alloc] initWithCid : @"userCid" 
+                                                                      tms : @"tms" 
+                                                                      uid : @"uid" 
+                                                                      hid : @"hid" 
+                                                                     uidc : @1
   ];
   NSMediatagSDK *mediatagSDK = [[NSMediatagSDK alloc] initWithConfiguration: configuration];
 
 ```
 
-### Check Configuration
+### Проверка конфигурации
   ```swift
     func getUserAttributes() -> NSMutableDictionary
   ```
-### Events Sending
-> all Event properties [here](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift)
+### Отправка событий
+> все свойства события [см. здесь](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift)
 ```swift
-  [mediatagSDK nextWithContactType:  @1
-                           view:  @2
-                            idc:  @3
-                           idlc:  @"idlc"
-                            fts:  43234
-                           urlc:  @"http://event_url.ru?query=query"
-                          media:  @"media"
-                            ver:  @36 ];
+  [mediatagSDK nextWithContactType : @1
+                              view : @2
+                               idc : @3
+                              idlc : @"idlc"
+                               fts : 43234
+                              urlc : @"http://event_url.ru?query=query"
+                             media : @"media"
+                               ver : @36 
+  ];
 ```
 - `Sending availability` 
-  if request cannot be sended or rejected, url will be added to [sending queue](https://github.com/miromax21/miromaxPod#sending-queue) 
+  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в [очередь отправки](https://github.com/miromax21/miromaxPod#sending-queue) 
   ```swift 
     func getSendingAbility() -> Bool
   ```
 
-  > After the internet connection is restored  the requests from the [sending queue](https://github.com/miromax21/miromaxPod#sending-queue) will try to resume, otherwise the sending of pending requests will be suspended
+  > После восстановления интернет-соединения выполнится попытка отправить запросы из [очереди отправки](https://github.com/miromax21/miromaxPod#sending-queue), в противном случае отправка ожидающих запросов будет приостановлена.
   
 - `Sending queue`
   ```swift

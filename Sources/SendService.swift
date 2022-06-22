@@ -1,6 +1,6 @@
 //
 //  SendService.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
 //  Created by Maksim Mironov on 17.05.2022.
 //

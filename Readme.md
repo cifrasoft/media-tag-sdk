@@ -1,18 +1,16 @@
 
 # MediatagSDK
-We would like to collect anonymous information about a user's online activities to create some statistics. 
+Мы хотели бы собирать анонимную информацию о действиях пользователя в Интернете для статистического анализа. 
 
-this framework gives you the opportunity :
-- set the sender configuration
-  > generate and cache a "basic set" of sending parameters needed to calculate statistics
-- to send Events with user data merged with the "base set"
-- autonomously manage the sending of data to the server
+данный фреймворк дает вам возможность :
+- устанавливать конфигурацию отправителя
+  > сгенерировать и закэшировать «базовый набор» параметров отправки, необходимых для подсчета статистики
+- отправлять [Event](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift/) с пользовательскими данными
+- автоматическое управление передачей данных на сервер
 
-## Installation
+## Установка
 
 ### CocoaPods
-
-Use the following entry in your Podfile:
 
 ```rb
   pod 'MediatagSDK'
@@ -20,46 +18,46 @@ Use the following entry in your Podfile:
 
 ### Swift Package Manager
 
-The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. 
+[Swift Package Manager](https://swift.org/package-manager/) - инструмент для распространения кода Swift, интегрированный в swiftкомпилятор.
 
-Once you have your Swift package set up, adding MediatagSDK as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+После того, как вы настроили свой пакет Swift, добавьте EventSDK в зависимости от качества так просто, как добавьте его к dependenciesвашему же файлу Package.swift.
 
 ```swift
   dependencies: [
       .package(url: "https://github.com/miromax21/miromaxPod.git", .upToNextMajor(from: "0.1.1"))
   ]
 ```
-> This article is about `swift` using, if you want to use Objective-C check [this](https://github.com/miromax21/miromaxPod/blob/master/Sources/NS/Readme.ns.md)
+> Эта статья об интеграции в `swift`, если вы хотите использовать `Objective-C`, вам [сюда](https://github.com/miromax21/miromaxPod/blob/master/Sources/NS/Readme.ns.md)
 
-In any file you'd like to use MediatagSDK in, don't forget to
-import the framework with `import MediatagSDK`.
+В любом файле, в котором вы хотите использовать MediatagSDK, не забудьте `import MediatagSDK`.
 
-## Usage
-### Build
+## Применение
+### Запуск
 ```swift
   let mediatagSDK = MediatagSDK(cid: "cid", tms: "tms", uid: "uid", hid: "hid", uidc: 3123)
 ```
-> for advanced configuration you can see [here](https://github.com/miromax21/miromaxPod/blob/master/Sources/Readme.advanced.md)
-#### Check Base Attributes
+> пример расширенной конфигураций  [здесь](https://github.com/miromax21/miromaxPod/blob/master/Sources/Readme.advanced.md)
+#### Проверка базовых аттрибутов
   ```swift
     var userAttributes:  [[String: Any?]]
     // mediatagSDK.userAttributes -> [[String: Any?]] 
   ```
 
-### Events Sending
-> all Event properties [here](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift)
+### Отправка событий
+> все события [см. здесь](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift)
 ```swift
   let event = Event(contactType: .undefined, view: .start)
   mediatagSDK.next(event)
 ```
 
 - `Sending availability` 
-  if request cannot be sended or rejected, url will be added to [sending queue](https://github.com/miromax21/miromaxPod#sending-queue) 
+  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в [очередь сообщений](https://github.com/miromax21/miromaxPod#sending-queue) 
   ```swift 
     var sendingIsAvailable: Bool
   ```
 
   > After the internet connection is restored  the requests from the `sending queue` will try to resume, otherwise the sending of pending requests will be suspended
+  > После восстановления интернет-подключения запросы от сервера `sending queue` будут возобновлены,иначе отправка ожидающих отправки запросов будет приостановлена.
   
 - `Sending queue`
   ```swift

@@ -1,8 +1,8 @@
 //
 //  NSConfiguration.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
-//  Created by Sergey Zhidkov on 02.06.2022.
+//  Created by Maksim Mironov on 02.06.2022.
 //
 
 import Foundation

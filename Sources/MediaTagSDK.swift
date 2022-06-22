@@ -1,24 +1,13 @@
 //
-//  MediaTagSDK.swift
-//  MediaTagSDK
+//  MediatagSDK.swift
+//  MediatagSDK
 //
 //  Created by Maksim Mironov on 11.04.2022.
 //
 
 import Foundation
 import Network
-public protocol EventFactorySendProtocol{
-  var sendingIsAvailable: Bool {get}
-  func next( _ event: Event)
-}
-
-public protocol EventFactoryInfoProtocol{
-  var sendingQueue: [String?] {get}
-  var userAttributes:  [[String: Any]] {get}
-}
-public protocol EventFactoryProtocol: EventFactorySendProtocol, EventFactoryInfoProtocol{}
-
-public final class MediatagSDK: EventFactoryProtocol {
+public final class MediatagSDK {
   
   private let sendService: SendService!
   private var timer: Timer?
@@ -55,7 +44,7 @@ public final class MediatagSDK: EventFactoryProtocol {
   public init(
     configuration: ConfigurationType,
     plugins: [PluginType] = [],
-    queue: DispatchQueue = DispatchQueue(label: "com.tsifrasoftMediaTagSdkInternetMonitor")
+    queue: DispatchQueue = DispatchQueue(label: "com.tsifrasoftMediatagSDKInternetMonitor")
   ) {
     self.sendService = SendService(configuration: configuration, plugins: plugins)
     start(heartbeatInterval: configuration.heartbeatInterval)
@@ -96,7 +85,7 @@ public final class MediatagSDK: EventFactoryProtocol {
   }
 }
 
-extension MediatagSDK: EventFactoryInfoProtocol {
+extension MediatagSDK {
   public var sendingQueue: [String?] {
     return sendService.sendingQueue.state
   }

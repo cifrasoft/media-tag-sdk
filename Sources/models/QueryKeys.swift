@@ -1,6 +1,6 @@
 //
 //  Configuration.swift
-//  MediaTagSDK
+//  MediatagSDK
 //
 //  Created by Maksim Mironov on 13.04.2022.
 //
@@ -9,8 +9,8 @@ import Foundation
 // # The list of keys to build URL
 public enum QueryKeys: String {
   
-  // ## UserData
-  // ### Init
+  // MARK: Init
+  
   /// Client ID.
   case cid = "cid"
   case uid = "uid"
@@ -21,7 +21,8 @@ public enum QueryKeys: String {
   /// The ID of the thematic section.  Assigned by Mediascope
   case tms = "tms"
   
-  // ### Event
+  // MARK: Event
+  
   /// Type of contact.
   case type = "type"
   /// User/device ID
@@ -41,7 +42,7 @@ public enum QueryKeys: String {
   /// Local timestamp of the event
   case tsu = "tsu"
   
-  // ## PackageData
+  // MARK: PackageData
   
   /// Device IDs
   case dvi = "dvi"
@@ -60,6 +61,7 @@ public enum QueryKeys: String {
   /// Installation ID generated in the SDK
   case sid = "sid"
 
+  // MARK: Runtime send keys
   /// The local timestamp of when the event was sent.
   case tsc = "tsc"
 }
