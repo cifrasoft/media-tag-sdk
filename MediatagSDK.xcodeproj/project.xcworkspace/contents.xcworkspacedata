@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/sergeyzhidkov/Documents/media-tag-sdk/MediatagSDK.xcodeproj">
+      location = "self:/Users/sergeyzhidkov/Documents/media-tag-sdk-ios/MediatagSDK.xcodeproj">
    </FileRef>
 </Workspace>
