@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'MediaTagSDK'
-  s.version = '1.0.0'
+  s.version = '0.9.0'
   s.license = 'MIT'
   s.summary = 'MediaTagSDK framework'
   s.homepage = 'https://github.com/cifrasoft/media-tag-sdk/'

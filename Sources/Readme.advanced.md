@@ -19,7 +19,7 @@
     }
   ```
 ### Настройка параметров конфигурации по умолчанию:
-Протокол ConfigurationTyp eнаследуется от [RequestConfiguration](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Configuration.swift)
+Протокол ConfigurationTyp eнаследуется от [RequestConfiguration](https://github.com/cifrasoft/media-tag-sdk/blob/master/Sources/models/Configuration.swift)
 > Вы можете переопределить методы построения URL-адреса
 - `urlComponents` (базовая реализация):
   ```swift
@@ -34,7 +34,7 @@
   > не забывайте '/' в конце хоста или в начале пути, иначе запрос будет отклонен
 
 - `toQuery()` 
-  преобразовать конфигурацию в Dictionary<String, Any?> для [инициализации](https://github.com/miromax21/miromaxPod#check-configuration) элементов базового url
+  преобразовать конфигурацию в Dictionary<String, Any?> для [инициализации](https://github.com/cifrasoft/media-tag-sdk#check-configuration) элементов базового url
   ```swift
     func toQuery() -> [[String: Any?]] {}
   ```

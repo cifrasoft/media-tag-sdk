@@ -25,7 +25,7 @@
     func getUserAttributes() -> NSMutableDictionary
   ```
 ### Отправка событий
-> все свойства события [см. здесь](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift)
+> все свойства события [см. здесь](https://github.com/cifrasoft/media-tag-sdk/blob/master/Sources/models/Event.swift)
 ```swift
   [mediatagSDK nextWithContactType : @1
                               view : @2
@@ -38,12 +38,12 @@
   ];
 ```
 - `Sending availability` 
-  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в [очередь отправки](https://github.com/miromax21/miromaxPod#sending-queue) 
+  если запрос не может быть отправлен или отклонен, URL-адрес будет добавлен в [очередь отправки](https://github.com/cifrasoft/media-tag-sdk#sending-queue) 
   ```swift 
     func getSendingAbility() -> Bool
   ```
 
-  > После восстановления интернет-соединения выполнится попытка отправить запросы из [очереди отправки](https://github.com/miromax21/miromaxPod#sending-queue), в противном случае отправка ожидающих запросов будет приостановлена.
+  > После восстановления интернет-соединения выполнится попытка отправить запросы из [очереди отправки](https://github.com/cifrasoft/media-tag-sdk#sending-queue), в противном случае отправка ожидающих запросов будет приостановлена.
   
 - `Sending queue`
   ```swift
