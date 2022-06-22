@@ -7,14 +7,18 @@
 
 import Foundation
 import Network
-public protocol EventFactoryProtocol{
-  func next( _ event: Event)
+public protocol EventFactorySendProtocol{
   var sendingIsAvailable: Bool {get}
+  func next( _ event: Event)
+}
+
+public protocol EventFactoryInfoProtocol{
   var sendingQueue: [String?] {get}
   var userAttributes:  [[String: Any]] {get}
 }
+public protocol EventFactoryProtocol: EventFactorySendProtocol, EventFactoryInfoProtocol{}
 
-public final class MediaTagSDK: EventFactoryProtocol {
+public final class MediatagSDK: EventFactoryProtocol {
   
   private let sendService: SendService!
   private var timer: Timer?
@@ -28,8 +32,7 @@ public final class MediaTagSDK: EventFactoryProtocol {
     }
     return monitor
   }()
-//  private var heartbeatInterval: Double = 30.0
-  
+
   /// Data sending ability trigger
   /// # Notes: #
   /// 1.  case `false`current  request will be add into  sendingQueue
@@ -93,12 +96,12 @@ public final class MediaTagSDK: EventFactoryProtocol {
   }
 }
 
-public extension MediaTagSDK {
-  var sendingQueue: [String?] {
+extension MediatagSDK: EventFactoryInfoProtocol {
+  public var sendingQueue: [String?] {
     return sendService.sendingQueue.state
   }
   
-  var userAttributes:  [[String: Any]] {
+  public var userAttributes:  [[String: Any]] {
     return sendService.baseQueryItems
   }
 }

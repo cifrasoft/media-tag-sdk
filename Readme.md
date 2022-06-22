@@ -1,5 +1,5 @@
 
-# MiromaxPod
+# MediatagSDK
 We would like to collect anonymous information about a user's online activities to create some statistics. 
 
 this framework gives you the opportunity :
@@ -15,14 +15,14 @@ this framework gives you the opportunity :
 Use the following entry in your Podfile:
 
 ```rb
-  pod 'MediaTagSDK'
+  pod 'MediatagSDK'
 ```
 
 ### Swift Package Manager
 
 The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. 
 
-Once you have your Swift package set up, adding MediaTagSDK as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+Once you have your Swift package set up, adding MediatagSDK as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
 
 ```swift
   dependencies: [
@@ -31,26 +31,26 @@ Once you have your Swift package set up, adding MediaTagSDK as a dependency is a
 ```
 > This article is about `swift` using, if you want to use Objective-C check [this](https://github.com/miromax21/miromaxPod/blob/master/Sources/NS/Readme.ns.md)
 
-In any file you'd like to use MediaTagSDK in, don't forget to
-import the framework with `import MediaTagSDK`.
+In any file you'd like to use MediatagSDK in, don't forget to
+import the framework with `import MediatagSDK`.
 
 ## Usage
 ### Build
 ```swift
-  let mediaTagSDK = MediaTagSDK(cid: "cid", tms: "tms", uid: "uid", hid: "hid", uidc: 3123)
+  let mediatagSDK = MediatagSDK(cid: "cid", tms: "tms", uid: "uid", hid: "hid", uidc: 3123)
 ```
 > for advanced configuration you can see [here](https://github.com/miromax21/miromaxPod/blob/master/Sources/Readme.advanced.md)
 #### Check Base Attributes
   ```swift
     var userAttributes:  [[String: Any?]]
-    // mediaTagSDK.userAttributes -> [[String: Any?]] 
+    // mediatagSDK.userAttributes -> [[String: Any?]] 
   ```
 
 ### Events Sending
 > all Event properties [here](https://github.com/miromax21/miromaxPod/blob/master/Sources/models/Event.swift)
 ```swift
   let event = Event(contactType: .undefined, view: .start)
-  mediaTagSDK.next(event)
+  mediatagSDK.next(event)
 ```
 
 - `Sending availability` 
@@ -64,6 +64,6 @@ import the framework with `import MediaTagSDK`.
 - `Sending queue`
   ```swift
     var sendingQueue: [String?]
-    // mediaTagSDK.sendingQueue -> [String?]
+    // mediatagSDK.sendingQueue -> [String?]
   ```
   
