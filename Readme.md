@@ -34,7 +34,7 @@
 ## Применение
 ### Запуск
 ```swift
-  let mediatagSDK = MediatagSDK(cid: "cid", tms: "tms", uid: "uid", hid: "hid", uidc: 3123)
+  MediatagSDK.shared.configure(cid: "cid", tms: "tms", uid: "uid", hid: "hid", uidc: 1212)
 ```
 > пример расширенной конфигураций  [здесь](https://github.com/cifrasoft/media-tag-sdk/blob/master/Sources/Readme.advanced.md)
 #### Проверка базовых аттрибутов
@@ -43,10 +43,10 @@
   ```
 
 ### Отправка событий
-> все события [см. здесь](https://github.com/cifrasoft/media-tag-sdk/blob/master/Sources/models/Event.swift)
+> все проперти [см. здесь](https://github.com/cifrasoft/media-tag-sdk/blob/master/Sources/models/Event.swift)
 ```swift
   let event = Event(contactType: .undefined, view: .start)
-  mediatagSDK.next(event)
+    MediatagSDK.shared.next(event)
 ```
 
 - `Возможность отправки` 
