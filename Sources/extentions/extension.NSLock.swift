@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 extension NSRecursiveLock {
     @discardableResult
     func with<T>(_ block: () throws -> T) rethrows -> T {

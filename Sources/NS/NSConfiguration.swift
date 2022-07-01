@@ -6,17 +6,19 @@
 //
 
 import Foundation
-public class NSConfiguration: NSObject, ConfigurationType{
+
+public class NSConfiguration: NSObject, ConfigurationType {
+
   public var cid: String = ""
-  
+
   public var tms: String = ""
-  
+
   public var hid: String?
-  
+
   public var uid: String?
-  
+
   public var uidc: Int?
-    
+
   @objc public init(cid: String, tms: String, uid: String?, hid: String?, uidc: NSNumber?) {
     super.init()
     self.cid = cid

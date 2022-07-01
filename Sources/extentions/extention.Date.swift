@@ -6,8 +6,9 @@
 //
 
 import Foundation
+
 extension Date {
-  func getCurrentTimeStamp() -> Int{
+  func getCurrentTimeStamp() -> Int {
     let secondsFromGmt = TimeZone.autoupdatingCurrent.secondsFromGMT()
     let timestamp  = Int(self.timeIntervalSince1970)
     return timestamp - secondsFromGmt
