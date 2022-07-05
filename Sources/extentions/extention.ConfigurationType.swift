@@ -10,11 +10,11 @@ import Foundation
 extension ConfigurationType {
 
   public var sendingQueueBufferSize: Int {
-    return 1000
+      return 1000
   }
 
   public var heartbeatInterval: Double {
-    return 30.0
+      return 30.0
   }
 
   public var plugins: [PluginType]? {
@@ -22,7 +22,7 @@ extension ConfigurationType {
   }
 
   public var baseUrl: URL! {
-    return URL(string: "https://tns-counter.ru/e/msdkev/")!
+     URL(string: "https://tns-counter.ru/e/msdkev/")!
   }
 
   public func toQuery() -> [[String: Any?]] {
