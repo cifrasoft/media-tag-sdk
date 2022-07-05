@@ -21,14 +21,11 @@
 ### Настройка параметров конфигурации по умолчанию:
 Протокол ConfigurationTyp eнаследуется от [RequestConfiguration](https://github.com/cifrasoft/media-tag-sdk/blob/master/Sources/models/Configuration.swift)
 > Вы можете переопределить методы построения URL-адреса
-- `urlComponents` (базовая реализация):
+
+- `baseUrl` (базовая реализация):
   ```swift
-    var urlComponents: URLComponents! {
-      var urlComponents = URLComponents()
-      urlComponents.scheme = "https"
-      urlComponents.host = "domain" 
-      urlComponents.path = "/path" // **ВАЖНО** добавьте '/'
-      return urlComponents
+    var baseUrl: URL! {
+      return URL(string: "https/tns-counter.ru/e/msdkev")!
     }
   ```
   > не забывайте '/' в конце хоста или в начале пути, иначе запрос будет отклонен

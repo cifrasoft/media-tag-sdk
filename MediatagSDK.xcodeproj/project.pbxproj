@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0624652872DE5400BBF762 /* extention.URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0624642872DE5400BBF762 /* extention.URL.swift */; };
 		CD8B1DBC285C788A00A0FBCB /* MediatagSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = CD8B1DBB285C788A00A0FBCB /* MediatagSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD8B1DC3285C78AD00A0FBCB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CD8B1DC2285C78AD00A0FBCB /* LICENSE */; };
 		CD8B1DC5285C78C100A0FBCB /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = CD8B1DC4285C78C100A0FBCB /* Readme.md */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD0624642872DE5400BBF762 /* extention.URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extention.URL.swift; sourceTree = "<group>"; };
 		CD8B1DB8285C788A00A0FBCB /* MediatagSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediatagSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8B1DBB285C788A00A0FBCB /* MediatagSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediatagSDK.h; sourceTree = "<group>"; };
 		CD8B1DC2285C78AD00A0FBCB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				CD8B1DCE285C794500A0FBCB /* extension.NSLock.swift */,
 				CD8B1DCF285C794500A0FBCB /* extention.ConfigurationType.swift */,
 				CD8B1DD0285C794500A0FBCB /* extention.Date.swift */,
+				CD0624642872DE5400BBF762 /* extention.URL.swift */,
 			);
 			path = extentions;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				CD8B1DB4285C788A00A0FBCB /* Sources */,
 				CD8B1DB5285C788A00A0FBCB /* Frameworks */,
 				CD8B1DB6285C788A00A0FBCB /* Resources */,
+				CD062461286EE06C00BBF762 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -210,6 +214,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CD062461286EE06C00BBF762 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD8B1DB4285C788A00A0FBCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -223,6 +248,7 @@
 				CD8B1DD3285C794500A0FBCB /* extention.Date.swift in Sources */,
 				CD8B1DDA285C795F00A0FBCB /* Configuration.swift in Sources */,
 				CD8B1DCC285C790600A0FBCB /* NSMediatagSDK.swift in Sources */,
+				CD0624652872DE5400BBF762 /* extention.URL.swift in Sources */,
 				CD8B1DD2285C794500A0FBCB /* extention.ConfigurationType.swift in Sources */,
 				CD8B1DE8285C797B00A0FBCB /* DeviceData.swift in Sources */,
 				CD8B1DD9285C795F00A0FBCB /* ModelEnums.swift in Sources */,

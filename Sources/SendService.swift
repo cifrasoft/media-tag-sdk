@@ -29,9 +29,8 @@ final class SendService {
   func sendNext(event: Event) {
     let nextQueryDictionary = extendQuery(join: event.toQuery())
     let queryItems = clientConfiguration.mapQuery(query: nextQueryDictionary)
-    var urlComponents = clientConfiguration.urlComponents
-    urlComponents?.queryItems = queryItems
-    guard let stringUrl = urlComponents?.url?.absoluteString else {
+
+    guard let stringUrl = clientConfiguration.baseUrl.appending(queryItems)?.absoluteString else {
       return
     }
     guard sendingIsAvailable else {

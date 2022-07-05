@@ -10,23 +10,19 @@ import Foundation
 extension ConfigurationType {
 
   public var sendingQueueBufferSize: Int {
-      return 1000
+    return 1000
   }
 
   public var heartbeatInterval: Double {
-      return 30.0
+    return 30.0
   }
 
   public var plugins: [PluginType]? {
     return nil
   }
 
-  public var urlComponents: URLComponents! {
-      var urlComponents = URLComponents()
-      urlComponents.scheme = "https"
-      urlComponents.host = "tns-counter.ru"
-      urlComponents.path = "/e/msdkev"
-      return urlComponents
+  public var baseUrl: URL! {
+    return URL(string: "https://tns-counter.ru/e/msdkev/")!
   }
 
   public func toQuery() -> [[String: Any?]] {

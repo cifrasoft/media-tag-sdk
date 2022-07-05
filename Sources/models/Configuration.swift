@@ -13,10 +13,10 @@ public protocol RequestConfiguration: AnyObject {
   var plugins: [PluginType]? { get }
   var sendingQueueBufferSize: Int { get }
 
-  /// Request `URLComponents` configuration
-  /// URLComponents based structure to configure the base part of the target URL
-  var urlComponents: URLComponents! {get}
-
+  /// Request `URL` configuration
+  /// Basic URL that will be extended by events
+  var baseUrl: URL {get}
+  
   /// Request `URLQueryItem` configuration
   /// Map self to  `[URLQueryItem: Value]` for  `baseQueryItems` configuration
   func toQuery() -> [[String: Any?]]
