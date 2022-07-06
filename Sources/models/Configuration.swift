@@ -8,19 +8,19 @@
 import Foundation
 
 public protocol RequestConfiguration: AnyObject {
-  
+
   /// Sending state:
   /// Interval of sending heartbeat request
   var heartbeatInterval: Double { get }
-  
+
   /// Request `URL` transformation:
   /// User plugins
   var plugins: [PluginType]? { get }
-  
+
   /// Request `URL` configuration:
   /// Replace all occurrences of the target URL with the value of the corresponding key
   var urlReplacingOccurrences: [String: String] { get }
-  
+
   /// Sending state:
   /// Max number of saved unsent requests
   var sendingQueueBufferSize: Int { get }
