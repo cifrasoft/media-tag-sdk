@@ -26,7 +26,7 @@ extension ConfigurationType {
   }
 
   public var urlReplacingOccurrences: [String: String] {
-    ["msdkev/?": "msdkev/"]
+    ["msdkev/?": "msdkev/&"]
   }
 
   public func toQuery() -> [[String: Any?]] {
