@@ -24,6 +24,10 @@ extension ConfigurationType {
   public var baseUrl: URL {
      return URL(string: "https://tns-counter.ru/e/msdkev/")!
   }
+  
+  public var urlReplacingOccurrences: [String: String] {
+    ["msdkev/?": "msdkev/"]
+  }
 
   public func toQuery() -> [[String: Any?]] {
     typealias Keys = QueryKeys

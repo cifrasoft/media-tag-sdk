@@ -30,9 +30,16 @@ final class SendService {
     let nextQueryDictionary = extendQuery(join: event.toQuery())
     let queryItems = clientConfiguration.mapQuery(query: nextQueryDictionary)
 
-    guard let stringUrl = clientConfiguration.baseUrl.appending(queryItems)?.absoluteString else {
+    guard var stringUrl = clientConfiguration.baseUrl.appending(queryItems)?.absoluteString else {
       return
     }
+    
+    if clientConfiguration.urlReplacingOccurrences.count > 0 {
+      for (spChar, repl) in clientConfiguration.urlReplacingOccurrences {
+        stringUrl = stringUrl.replacingOccurrences(of: spChar, with: repl, options: .literal, range: nil)
+      }
+    }
+
     guard sendingIsAvailable else {
       write(url: stringUrl)
       return

@@ -45,8 +45,14 @@
    - [x] для прроверки
    - [x] фильтрации
    - [x] добавления кастомных параметров
-
-
+   
+- `urlReplacingOccurrences`
+  заменяет все вхождения key в url на value
+  ```swift
+      var urlReplacingOccurrences: [String: String] 
+  ```
+  по умолчанию для baseUrl : ["msdkev/?": "msdkev/"] для оптимизации работы сервера
+  
 ### Запуск
 ```swift
   let mediatagSDK = MediatagSDK(configuration: config)
