@@ -21,8 +21,8 @@ extension ConfigurationType {
     return nil
   }
 
-  public var baseUrl: URL! {
-     URL(string: "https://tns-counter.ru/e/msdkev/")!
+  public var baseUrl: URL {
+     return URL(string: "https://tns-counter.ru/e/msdkev/")!
   }
 
   public func toQuery() -> [[String: Any?]] {

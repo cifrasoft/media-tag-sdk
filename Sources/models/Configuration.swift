@@ -15,8 +15,8 @@ public protocol RequestConfiguration: AnyObject {
 
   /// Request `URL` configuration
   /// Basic URL that will be extended by events
-  var baseUrl: URL! {get}
-  
+  var baseUrl: URL {get}
+
   /// Request `URLQueryItem` configuration
   /// Map self to  `[URLQueryItem: Value]` for  `baseQueryItems` configuration
   func toQuery() -> [[String: Any?]]
