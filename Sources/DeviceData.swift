@@ -12,6 +12,8 @@ import UIKit
 
 final class DeviceData {
 
+  private(set) var isFulldentity = false
+
   var uuid: String {
     if let id = UserDefaults.standard.string(forKey: "uuid") {
       return id
@@ -22,7 +24,7 @@ final class DeviceData {
     }
   }
 
-  lazy var idfa: String? = {
+  var idfa: String? {
     if #available(iOS 14, *) {
         if ATTrackingManager.trackingAuthorizationStatus != ATTrackingManager.AuthorizationStatus.authorized {
             return nil
@@ -33,13 +35,14 @@ final class DeviceData {
         }
     }
     return ASIdentifierManager.shared().advertisingIdentifier.uuidString
-  }()
+  }
 
-  lazy var identity: String = {
+  var identity: String {
     let idfa = self.idfa ?? ""
     let idfv = UIDevice.current.identifierForVendor?.uuidString ?? ""
-    return "\(idfa);\(idfv)"
-  }()
+    isFulldentity = !(idfa == "" && idfv == "")
+    return isFulldentity ? ";\(idfa);\(idfv)" : "\(uuid)"
+  }
 
   func getDeviceName() -> String {
     var systemInfo = utsname()

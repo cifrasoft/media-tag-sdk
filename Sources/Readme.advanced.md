@@ -55,7 +55,10 @@
   
 ### Запуск
 ```swift
+  // user variable 
   let mediatagSDK = MediatagSDK(configuration: config)
+  // shared 
+  MediatagSDK.shared.setConfiguration(configuration: Configuration())
 ```
   
 ### Подготовка запроса

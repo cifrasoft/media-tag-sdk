@@ -8,25 +8,25 @@
 import Foundation
 
 final class SendService {
+
   var baseQueryItems: [[String: Any]] = [[:]]
   var sendingQueue: RingBuffer<String>!
   var sendingIsAvailable: Bool = true
-  var clientConfiguration: ConfigurationType {
-    didSet {
-      let depaultPackage = DefaultPackageData()
-      baseQueryItems = depaultPackage.initBaseQuery(join: clientConfiguration.toQuery())
-    }
-  }
-  private let lock = NSRecursiveLock()
+  var clientConfiguration: ConfigurationType!
 
+  private let lock = NSRecursiveLock()
+  private var hasFullinformation = false
   private var timer: Timer?
 
   init(configuration: ConfigurationType) {
-    self.clientConfiguration = configuration
+    setConfiguration(configuration: configuration)
     self.sendingQueue = RingBuffer(count: clientConfiguration.sendingQueueBufferSize)
   }
 
   func sendNext(event: Event) {
+    if !hasFullinformation {
+      setConfiguration(configuration: clientConfiguration)
+    }
     let nextQueryDictionary = extendQuery(join: event.toQuery())
     let queryItems = clientConfiguration.mapQuery(query: nextQueryDictionary)
 
@@ -67,6 +67,13 @@ final class SendService {
         }
       }
     }
+  }
+
+  private func setConfiguration(configuration: ConfigurationType) {
+    self.clientConfiguration = configuration
+    let depaultPackage = DefaultPackageData()
+    baseQueryItems = depaultPackage.initBaseQuery(join: clientConfiguration.toQuery())
+    hasFullinformation = depaultPackage.hasFullinformation
   }
 
   private func write(url: String) {

@@ -9,6 +9,8 @@ import Foundation
 
 final class DefaultPackageData {
 
+  var hasFullinformation: Bool = false
+
   private var osVersion: String {
       let version = ProcessInfo().operatingSystemVersion
       return "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
@@ -17,6 +19,7 @@ final class DefaultPackageData {
   private lazy var queryDictionary: [[String: Any]] = {
     let device = DeviceData()
     typealias Keys = QueryKeys
+    hasFullinformation = device.isFulldentity
     return [
       [Keys.os.rawValue: "ios \(osVersion)"],
       [Keys.typ.rawValue: "2"],

@@ -2,7 +2,7 @@
 //  extention.swift
 //  MediatagSDK
 //
-//  Created by Sergey Zhidkov on 04.07.2022.
+//  Created by Maksim Mironov on 04.07.2022.
 //
 
 import Foundation
