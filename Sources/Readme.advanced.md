@@ -24,7 +24,7 @@
 
 - `baseUrl` (базовая реализация):
   ```swift
-    var baseUrl: URL! {
+    var baseUrl: URL {
       return URL(string: "https/tns-counter.ru/e/msdkev")!
     }
   ```
