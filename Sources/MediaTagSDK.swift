@@ -15,8 +15,8 @@ public final class MediatagSDK {
   private lazy var monitor: NWPathMonitor = {
     let monitor = NWPathMonitor()
     monitor.pathUpdateHandler = { [weak self] path in
-      let next = path.status != .unsatisfied
-      if next != self?.sendingIsAvailable {
+      let next = ([.wifi, .cellular].filter({ path.usesInterfaceType($0) }).first != nil)
+      if self?.sendingIsAvailable != next {
         self?.sendingIsAvailable = next
       }
     }
