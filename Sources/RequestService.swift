@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import CoreVideo
-import UIKit
 
 public typealias Action = (_ success: Bool, _ query: String) -> Void
 

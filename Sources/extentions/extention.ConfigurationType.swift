@@ -10,11 +10,11 @@ import Foundation
 extension ConfigurationType {
 
   public var sendingQueueBufferSize: Int {
-      return 1000
+    return 1000
   }
 
   public var heartbeatInterval: Double {
-      return 30.0
+    return 30.0
   }
 
   public var plugins: [PluginType]? {
@@ -43,7 +43,11 @@ extension ConfigurationType {
   public func mapQuery(query: [[String: Any?]]) -> [URLQueryItem] {
     var queryItems: [URLQueryItem] = []
     query.forEach {
-      guard let key = $0.first?.key, let value = $0.first?.value else {return}
+      guard
+        let key = $0.first?.key,
+        let value = $0.first?.value,
+        String(describing: value) != ""
+      else { return }
       queryItems.append(URLQueryItem(name: key, value: String(describing: value)))
     }
     return queryItems

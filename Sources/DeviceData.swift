@@ -4,13 +4,12 @@
 //
 //  Created by Maksim Mironov on 13.04.2022.
 //
-
 import Foundation
 import AppTrackingTransparency
 import AdSupport
 import UIKit
 
-final class DeviceData {
+struct DeviceData {
 
   private(set) var isFulldentity = false
 
@@ -37,11 +36,13 @@ final class DeviceData {
     return ASIdentifierManager.shared().advertisingIdentifier.uuidString
   }
 
-  var identity: String {
+  var identity: String = ""
+
+  init() {
     let idfa = self.idfa ?? ""
     let idfv = UIDevice.current.identifierForVendor?.uuidString ?? ""
     isFulldentity = !(idfa == "" && idfv == "")
-    return isFulldentity ? ";\(idfa);\(idfv)" : "\(uuid)"
+    identity =  isFulldentity ? ";\(idfa);\(idfv)" : "\(uuid)"
   }
 
   func getDeviceName() -> String {

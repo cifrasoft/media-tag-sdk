@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 /// user Event object
 public struct Event: Equatable, Hashable {

@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'MediaTagSDK'
-  s.version = '1.0.1'
+  s.version = '1.0.3'
   s.license = 'MIT'
   s.summary = 'MediatagSDK framework'
   s.homepage = 'https://github.com/cifrasoft/media-tag-sdk/'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   
   s.source = { :git => 'https://github.com/cifrasoft/media-tag-sdk.git', :tag => s.version.to_s }
   s.source_files = 'Sources/*.swift', 'Sources/extentions/*.swift', 'Sources/models/*.swift', 'Sources/NS/*.swift'
-  s.swift_version = '5.0'
-  s.platform = :ios, '13.0'
+  s.swift_version = '4.0'
+  s.platform = :ios, '12.0'
 
 end

@@ -8,24 +8,39 @@
 import Foundation
 
 final class SendService {
-
-  var baseQueryItems: [[String: Any]] = [[:]]
-  var sendingQueue: RingBuffer<String>!
+  typealias ItemsType = String
   var sendingIsAvailable: Bool = true
-  var clientConfiguration: ConfigurationType!
+  var clientConfiguration: ConfigurationType! {
+    didSet {
+      hasFullinformation = false
+      setBaseQueryItems()
+    }
+  }
+
+  private(set) var baseQueryItems: [[String: Any]] = [[:]]
+  private(set) var sendingQueue: RingBuffer<ItemsType>!
 
   private let lock = NSRecursiveLock()
   private var hasFullinformation = false
   private var timer: Timer?
 
-  init(configuration: ConfigurationType) {
-    setConfiguration(configuration: configuration)
-    self.sendingQueue = RingBuffer(count: clientConfiguration.sendingQueueBufferSize)
+  init(configuration: ConfigurationType, with: [ItemsType] = []) {
+    self.clientConfiguration = configuration
+    self.sendingQueue = RingBuffer(count: configuration.sendingQueueBufferSize)
+  }
+
+  func insertItems(items: [ItemsType]) {
+    let items = items.filter {
+      URL(string: $0) != nil
+    }
+    lock.with { [weak self] in
+      self?.sendingQueue.insert(items: items)
+    }
   }
 
   func sendNext(event: Event) {
     if !hasFullinformation {
-      setConfiguration(configuration: clientConfiguration)
+      setBaseQueryItems()
     }
     let nextQueryDictionary = extendQuery(join: event.toQuery())
     let queryItems = clientConfiguration.mapQuery(query: nextQueryDictionary)
@@ -52,28 +67,29 @@ final class SendService {
   }
 
   func sendFromQueue() {
-    guard sendingIsAvailable, !sendingQueue.isEmpty else {return}
-    while sendingIsAvailable && !sendingQueue.isEmpty {
-      lock.with { [weak self] in
-        guard
-          let target = sendingQueue.read(),
-          let url = target.item
-        else {
-          return
-        }
-        sendEvent(url: url) { [weak self] success, _ in
-          if !success {return}
+    guard sendingIsAvailable, !sendingQueue.isEmpty else {
+      return
+    }
+    lock.with { [weak self] in
+      guard
+        let target = sendingQueue.read(),
+        let url = target.item
+      else {
+        return
+      }
+      sendEvent(url: url) { [weak self] success, _ in
+        if success {
           self?.sendingQueue.clear(atIndex: target.at)
         }
+        self?.sendFromQueue()
       }
     }
   }
 
-  private func setConfiguration(configuration: ConfigurationType) {
-    self.clientConfiguration = configuration
-    let depaultPackage = DefaultPackageData()
-    baseQueryItems = depaultPackage.initBaseQuery(join: clientConfiguration.toQuery())
-    hasFullinformation = depaultPackage.hasFullinformation
+  private func setBaseQueryItems() {
+    let defaultPackage = DefaultPackageData()
+    baseQueryItems = defaultPackage.initBaseQuery(join: clientConfiguration.toQuery())
+    hasFullinformation = defaultPackage.hasFullinformation
   }
 
   private func write(url: String) {

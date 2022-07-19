@@ -81,9 +81,12 @@ public class NSMediatagSDK: NSObject {
     return mediatagSDK.sendingIsAvailable
   }
 
-  // swiftlint:disable syntactic_sugar
-  @objc public func getSendingQueue() -> Array<String> {
+  @objc public func getSendingQueue() -> [String] {
     return mediatagSDK.sendingQueue.compactMap {$0}
+  }
+
+  @objc public func setSendingQueue(items: [String]) {
+    mediatagSDK.sendingQueue = items
   }
 
   @objc public func getUserAttributes() -> NSMutableDictionary {
