@@ -62,7 +62,6 @@ public final class MediatagSDK {
     monitor.start(queue: DispatchQueue(label: "com.tsifrasoftEventSDKInternetMonitor"))
     sendService = SendService(configuration: configuration)
     sendService.clientConfiguration = configuration
-    start(heartbeatInterval: configuration.heartbeatInterval)
   }
 
   /// SDK convenience init
